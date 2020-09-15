@@ -75,12 +75,15 @@ class _InputPageState extends State<InputPage> {
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        SizedBox(
+                          height: 10.0,
+                        ),
                         Text(
                           'HEIGHT',
                           style: kLabelTextStyle,
                         ),
                         SizedBox(
-                          height: 10.0,
+                          height: 6.4,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -97,17 +100,24 @@ class _InputPageState extends State<InputPage> {
                             ),
                           ],
                         ),
-                        Slider(
-                          value: height.toDouble(),
-                          min: 120.0,
-                          max: 220.0,
-                          activeColor: Color(0xFFEB1555),
-                          inactiveColor: Color(0xFF8D8E98),
-                          onChanged: (double newValue) {
-                            setState(() {
-                              height = newValue.round();
-                            });
-                          },
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            thumbShape:
+                                RoundSliderThumbShape(enabledThumbRadius: 13.0),
+                            trackHeight: 1.0,
+                          ),
+                          child: Slider(
+                            value: height.toDouble(),
+                            min: 120.0,
+                            max: 220.0,
+                            activeColor: Color(0xFFEB1555),
+                            inactiveColor: Color(0xFF8D8E98),
+                            onChanged: (double newValue) {
+                              setState(() {
+                                height = newValue.round();
+                              });
+                            },
+                          ),
                         ),
                       ],
                     ),
